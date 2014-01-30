@@ -22,7 +22,11 @@ public class View {
     }
     
     public void imprimirAmigos(ArrayList<Usuario> listUsuarios){
-        
+        int contador;
+        for(contador = 0; contador < listUsuarios.size(); contador++){
+            
+            
+        }
     }
     
 }
