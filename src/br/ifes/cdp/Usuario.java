@@ -4,13 +4,14 @@
  */
 package br.ifes.cdp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author 20121bsi0414
  */
-public class Usuario {
+public class Usuario implements Serializable {
     
     private String nome;
     private String idade;

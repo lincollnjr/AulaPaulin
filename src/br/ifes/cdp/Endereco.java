@@ -4,11 +4,13 @@
  */
 package br.ifes.cdp;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 20121bsi0414
  */
-public class Endereco {
+public class Endereco implements Serializable{
     
     private String logradouro;
     private String numero;

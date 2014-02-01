@@ -4,6 +4,8 @@
  */
 package br.ifes.app;
 
+import br.ifes.cci.ControleGeral;
+
 /**
  *
  * @author 20121bsi0414
@@ -15,5 +17,8 @@ public class AulaPaulin {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        ControleGeral controle = new ControleGeral();
+        controle.run();
     }
 }
