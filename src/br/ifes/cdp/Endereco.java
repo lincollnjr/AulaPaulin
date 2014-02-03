@@ -20,11 +20,11 @@ public class Endereco implements Serializable{
     
     @Override
    public String toString(){
-       return "Logradouro: " +this.logradouro +"/n"
-               +"Numero: " +this.numero +"/n"
-               +"Bairro: " +this.bairro +"/n"
-               +"Cidade: " +this.cidade +"/n"
-               +"Estado: " +this.estado +"/n";
+       return  "Logradouro: " +this.logradouro +"\n"
+               +"Numero: " +this.numero +"\n"
+               +"Bairro: " +this.bairro +"\n"
+               +"Cidade: " +this.cidade +"\n"
+               +"Estado: " +this.estado +"\n";
    } 
 
     /**

@@ -34,10 +34,10 @@ public class Usuario implements Serializable {
     
     @Override
     public String toString(){
-        return "Nome: " +this.nome +"/n"
-                +"Idade: " +this.idade +"/n"   
-                +"Telefone: " +this.telefone +"/n"
-                +"Endereco: /n" +this.endereco.toString();   
+        return "Nome: " +this.nome +"\n"
+                +"Idade: " +this.idade +"\n"   
+                +"Telefone: " +this.telefone +"\n"
+                +"Endereco: \n" +this.endereco.toString();   
     }           
 
     /**
