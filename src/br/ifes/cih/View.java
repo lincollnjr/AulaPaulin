@@ -56,6 +56,9 @@ public class View {
     public void imprimirCadastroCidade(){
         System.out.println("A cidade do endereco do usuario: ");
     }
+    public void imprimirCadastroEstado(){
+        System.out.println("O Estado do endereco do usuario: ");
+    }
     
     public void imprimirDeleteUsuario(){
         System.out.println("O nome do usuario a ser removido: ");

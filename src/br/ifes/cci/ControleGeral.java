@@ -4,6 +4,7 @@
  */
 package br.ifes.cci;
 
+import br.ifes.cdp.Endereco;
 import br.ifes.cdp.Usuario;
 import br.ifes.cgd.Dados;
 import br.ifes.cih.View;
@@ -86,14 +87,18 @@ public class ControleGeral {
                     break;
                 }
                 case(5):{
-                    dados.saveUsuario(usuario);                
+                    dados.saveUsuario(usuario);  
+                    System.exit(0);
                 }            
-            }            
+            }
+            impressora.imprimirMenu();
+            opcao = scanner.nextInt();
         }       
     }
     
     public Usuario cadastraUsuario(){
         Usuario newUser = new Usuario();
+        Endereco newEnd = new Endereco();
         Scanner scanner = new Scanner(System.in);
         impressora.imprimirCadastroNome();
         newUser.setNome(scanner.nextLine());
@@ -102,14 +107,23 @@ public class ControleGeral {
         impressora.imprimirCadastroTelefone();
         newUser.setTelefone(scanner.nextLine());
         impressora.imprimirCadastroLogradouro();
-        newUser.getEndereco().setNumero(scanner.nextLine());
+        newEnd.setLogradouro(scanner.nextLine());
+        //newUser.getEndereco().setNumero(scanner.nextLine());
+        impressora.imprimirCadastroNumero();
+        newEnd.setNumero(scanner.nextLine());
+        //newUser.getEndereco().setLogradouro(scanner.nextLine());
         impressora.imprimirCadastroBairro();
-        newUser.getEndereco().setLogradouro(scanner.nextLine());
+        newEnd.setBairro(scanner.nextLine());
+        //newUser.getEndereco().setBairro(scanner.nextLine());
         impressora.imprimirCadastroCidade();
-        newUser.getEndereco().setBairro(scanner.nextLine());
-        impressora.imprimirCadastroCidade();
-        newUser.getEndereco().setCidade(scanner.nextLine()); 
+        newEnd.setCidade(scanner.nextLine());
+        //newUser.getEndereco().setCidade(scanner.nextLine()); 
+        impressora.imprimirCadastroEstado();
+        newEnd.setEstado(scanner.nextLine());
+        //newUser.getEndereco().setCidade(scanner.nextLine()); 
+        newUser.setEndereco(newEnd);
         return newUser;
+
     }
     
     
