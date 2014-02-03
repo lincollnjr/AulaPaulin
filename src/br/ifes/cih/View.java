@@ -23,9 +23,15 @@ public class View {
         System.out.println(" 5 - Sair");
     }
     
-    public void imprimirAmigos(ArrayList<Usuario> listUsuarios){
-        for(Usuario usuario: listUsuarios){
-            usuario.toString();
+    public void imprimirAmigo(Usuario usuario){
+        System.out.println(usuario);
+    }
+    
+    
+    public void imprimirListaAmigos(ArrayList<Usuario> listUsuarios){
+        int contador;
+        for(contador = 0; contador < listUsuarios.size(); contador++){
+            System.out.println(listUsuarios.get(contador));
         }
     }
     
@@ -68,6 +74,10 @@ public class View {
         System.out.println("O nome do usuario a ser pesquisado: ");
     }
     
+    public void imprimirAmigoRemovido(){
+        System.out.println("Amigo removido");
+    }    
+        
     public void imprimirAmigoNaoEncontrado(){
         System.out.println("Amigo nao encontrado");
     }

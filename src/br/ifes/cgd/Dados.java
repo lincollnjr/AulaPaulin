@@ -16,13 +16,10 @@ public class Dados {
     public void saveUsuario(Usuario usuario) {
 
         try {
-
-            FileOutputStream arquivoGrav = new FileOutputStream("C:\\saida.dat");
-            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-
-            objGravar.writeObject(usuario);
-            objGravar.close();
-            arquivoGrav.close();
+            /*Tenta salvar os dados do usuario*/
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("saida.dat"));           
+            out.writeObject(usuario);
+            out.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,21 +29,15 @@ public class Dados {
     public Usuario loadUsuario() throws ClassNotFoundException {
 
         try {
-            File testeArquivo = new File("C:\\saida.dat");
+            File testeArquivo = new File("saida.dat");
             if (testeArquivo.exists()) {
-                FileInputStream arquivoLeitura = new FileInputStream("C:\\saida.dat");
-                ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-                Usuario usuarioReturn = (Usuario) objLeitura.readObject();
-                arquivoLeitura.close();
-                objLeitura.close();
-                return usuarioReturn;
-            } else {
-                BufferedWriter out = new BufferedWriter(new FileWriter("C:\\saida.dat"));
-                out.write("");
-                out.close();
-
-            }
-
+                /*Se o arquivo existir ele faz o load*/
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream("saida.dat"));
+                Usuario usuarioReturn = (Usuario) in.readObject();
+                in.close();
+                return (Usuario) usuarioReturn;
+            } 
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

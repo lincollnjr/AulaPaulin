@@ -16,8 +16,8 @@ public class Usuario implements Serializable {
     private String nome;
     private String idade;
     private String telefone;
-    private ArrayList<Usuario> conhece;
-    private Endereco endereco;
+    private ArrayList<Usuario> conhece = new ArrayList<>();
+    private Endereco endereco = new Endereco();
     
     public void adicionarEnd(Endereco end){
         endereco.setNumero(end.getNumero());
@@ -34,10 +34,10 @@ public class Usuario implements Serializable {
     
     @Override
     public String toString(){
-        return "Nome: " +nome +"/n"
-                +"Idade: " +idade +"/n"   
-                +"Telefone: " +telefone +"/n"
-                +"Endereco: /n" +endereco.toString();   
+        return "Nome: " +this.nome +"/n"
+                +"Idade: " +this.idade +"/n"   
+                +"Telefone: " +this.telefone +"/n"
+                +"Endereco: /n" +this.endereco.toString();   
     }           
 
     /**

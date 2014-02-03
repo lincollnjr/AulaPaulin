@@ -17,21 +17,16 @@ import java.util.Scanner;
  */
 public class ControleGeral {
     
-    private View impressora = new View();
+    private final View impressora = new View();
     private Usuario usuario;
-    private Dados dados = new Dados();
-    public void run(){
-        
-        
-        try{
-            usuario = dados.loadUsuario();
-        }catch(Exception e){
-            usuario = null;
-        }
-        
+    private final Dados dados = new Dados();
+    public void run() throws ClassNotFoundException{
+
+        usuario = dados.loadUsuario();        
         impressora.imprimirMenu();
-        Scanner scanner = new Scanner(System.in);
-        int opcao = scanner.nextInt();
+        Scanner scannerInt = new Scanner(System.in);
+        Scanner scannerStr = new Scanner(System.in);
+        int opcao = scannerInt.nextInt();
         while(true){
             
             switch(opcao){
@@ -48,18 +43,19 @@ public class ControleGeral {
                     break;
                 }
                 case(2):{
-                    impressora.imprimirAmigos(usuario.listarAmigos());
+                    impressora.imprimirListaAmigos(usuario.listarAmigos());
                     break;
                 }
                 
                 case(3):{
                     int contador;
                     impressora.imprimirDeleteUsuario();
-                    String nome = scanner.nextLine();
+                    String nome = scannerStr.nextLine();
                     boolean achou = false;
                     for(contador = 0; contador < usuario.listarAmigos().size(); contador++){
-                        if(usuario.getNome().equals(nome)){
+                        if(usuario.listarAmigos().get(contador).getNome().equals(nome)){
                             usuario.listarAmigos().remove(contador);
+                            impressora.imprimirAmigoRemovido();
                             achou=true;
                             break;
                         }
@@ -72,11 +68,11 @@ public class ControleGeral {
                 case(4):{
                     int contador;
                     impressora.imprimirPesquisarUsuario();
-                    String nome = scanner.nextLine();
+                    String nome = scannerStr.nextLine();
                     boolean achou = false;
                     for(contador = 0; contador < usuario.listarAmigos().size(); contador++){
-                        if(usuario.getNome().equals(nome)){
-                            usuario.listarAmigos().get(contador).toString();
+                        if(usuario.listarAmigos().get(contador).getNome().equals(nome)){
+                            impressora.imprimirAmigo(usuario.listarAmigos().get(contador));
                             achou=true;
                             break;
                         }
@@ -92,7 +88,7 @@ public class ControleGeral {
                 }            
             }
             impressora.imprimirMenu();
-            opcao = scanner.nextInt();
+            opcao = scannerInt.nextInt();
         }       
     }
     
@@ -102,25 +98,28 @@ public class ControleGeral {
         Scanner scanner = new Scanner(System.in);
         impressora.imprimirCadastroNome();
         newUser.setNome(scanner.nextLine());
+        
         impressora.imprimirCadastroIdade();
         newUser.setIdade(scanner.nextLine());
+        
         impressora.imprimirCadastroTelefone();
         newUser.setTelefone(scanner.nextLine());
+        
         impressora.imprimirCadastroLogradouro();
         newEnd.setLogradouro(scanner.nextLine());
-        //newUser.getEndereco().setNumero(scanner.nextLine());
+        
         impressora.imprimirCadastroNumero();
         newEnd.setNumero(scanner.nextLine());
-        //newUser.getEndereco().setLogradouro(scanner.nextLine());
+        
         impressora.imprimirCadastroBairro();
         newEnd.setBairro(scanner.nextLine());
-        //newUser.getEndereco().setBairro(scanner.nextLine());
+        
         impressora.imprimirCadastroCidade();
         newEnd.setCidade(scanner.nextLine());
-        //newUser.getEndereco().setCidade(scanner.nextLine()); 
+         
         impressora.imprimirCadastroEstado();
         newEnd.setEstado(scanner.nextLine());
-        //newUser.getEndereco().setCidade(scanner.nextLine()); 
+        
         newUser.setEndereco(newEnd);
         return newUser;
 
