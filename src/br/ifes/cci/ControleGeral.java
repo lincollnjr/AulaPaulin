@@ -7,6 +7,7 @@ package br.ifes.cci;
 import br.ifes.cdp.Endereco;
 import br.ifes.cdp.Usuario;
 import br.ifes.cgd.Dados;
+import br.ifes.cgt.Controle;
 import br.ifes.cih.View;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class ControleGeral {
     private final View impressora = new View();
     private Usuario usuario;
     private final Dados dados = new Dados();
+    private final Controle controle = new Controle();
     public void run() throws ClassNotFoundException{
 
         usuario = dados.loadUsuario();        
@@ -51,16 +53,11 @@ public class ControleGeral {
                     int contador;
                     impressora.imprimirDeleteUsuario();
                     String nome = scannerStr.nextLine();
-                    boolean achou = false;
-                    for(contador = 0; contador < usuario.listarAmigos().size(); contador++){
-                        if(usuario.listarAmigos().get(contador).getNome().equals(nome)){
-                            usuario.listarAmigos().remove(contador);
-                            impressora.imprimirAmigoRemovido();
-                            achou=true;
-                            break;
-                        }
-                    }
-                    if(achou == false){
+                    try{
+                        Usuario usuarioExcluir = controle.procuraAmigo(usuario.listarAmigos(), nome);
+                        controle.removeAmigo(usuario.listarAmigos(),usuarioExcluir);
+                        impressora.imprimirAmigoRemovido();
+                    }catch(Exception e){
                         impressora.imprimirAmigoNaoEncontrado();
                     }
                     break;
@@ -69,15 +66,10 @@ public class ControleGeral {
                     int contador;
                     impressora.imprimirPesquisarUsuario();
                     String nome = scannerStr.nextLine();
-                    boolean achou = false;
-                    for(contador = 0; contador < usuario.listarAmigos().size(); contador++){
-                        if(usuario.listarAmigos().get(contador).getNome().equals(nome)){
-                            impressora.imprimirAmigo(usuario.listarAmigos().get(contador));
-                            achou=true;
-                            break;
-                        }
-                    }
-                    if(achou == false){
+                    try{
+                        Usuario usuarioImprimir = controle.procuraAmigo(usuario.listarAmigos(), nome);
+                        impressora.imprimirAmigo(usuarioImprimir);
+                    }catch(Exception e){
                         impressora.imprimirAmigoNaoEncontrado();
                     }
                     break;
