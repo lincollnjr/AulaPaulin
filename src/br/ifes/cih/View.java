@@ -70,15 +70,19 @@ public class View {
         System.out.println("O nome do usuario a ser removido: ");
     }
     
-        public void imprimirPesquisarUsuario(){
+    public void imprimirPesquisarUsuario(){
         System.out.println("O nome do usuario a ser pesquisado: ");
     }
     
     public void imprimirAmigoRemovido(){
-        System.out.println("Amigo removido");
+        System.out.println("Amigo removido.");
     }    
         
     public void imprimirAmigoNaoEncontrado(){
-        System.out.println("Amigo nao encontrado");
+        System.out.println("Amigo nao encontrado.");
+    }
+    
+    public void imprimirSalveSucess(){
+        System.out.println("Arquivo salvo com sucesso.");
     }
 }
