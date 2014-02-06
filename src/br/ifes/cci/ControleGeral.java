@@ -20,7 +20,7 @@ public class ControleGeral {
     
     private final View impressora = new View();
     private Usuario usuario;
-    private final Dados dados = new Dados();
+    private final Dados <Usuario> dados = new Dados<Usuario>();
     private final Controle controle = new Controle();
     public void run() throws ClassNotFoundException{
 

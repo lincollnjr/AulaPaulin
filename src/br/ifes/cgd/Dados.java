@@ -11,14 +11,14 @@ import java.io.*;
  *
  * @author 20121bsi0414
  */
-public class Dados {
+public class Dados<T extends Serializable> {
 
-    public void saveUsuario(Usuario usuario) {
+    public void saveUsuario(T objeto) {
 
         try {
             /*Tenta salvar os dados do usuario*/
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("saida.dat"));           
-            out.writeObject(usuario);
+            out.writeObject(objeto);
             out.close();
 
         } catch (IOException e) {
@@ -26,16 +26,16 @@ public class Dados {
         }
     }
 
-    public Usuario loadUsuario() throws ClassNotFoundException {
+    public T loadUsuario() throws ClassNotFoundException {
 
         try {
             File testeArquivo = new File("saida.dat");
             if (testeArquivo.exists()) {
                 /*Se o arquivo existir ele faz o load*/
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream("saida.dat"));
-                Usuario usuarioReturn = (Usuario) in.readObject();
+                T usuarioReturn = (T) in.readObject();
                 in.close();
-                return (Usuario) usuarioReturn;
+                return (T) usuarioReturn;
             } 
             
         } catch (IOException e) {
